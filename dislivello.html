@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolo Dislivello</title>
+    <style>
+        #container {
+            padding: 20px;
+            border: 1px solid black;
+            background-color: aqua;
+            margin: 10px;
+            height: 350px;
+            width: 300px;
+            
+        }
+        #miobottone1 {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #04AA6D;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <h3>Calcolo Dislivello del Trekking</h3>
+
+        <label for="partenza">Altezza punto di partenza (in metri):</label>
+        <input id="partenza" type="number">
+
+        <label for="pausa">Altezza punto di pausa (in metri):</label>
+        <input id="pausa" type="number">
+
+        <label for="arrivo">Altezza punto di arrivo (in metri):</label>
+        <input id="arrivo" type="number">
+
+        <p></p>
+
+        <button  id="miobottone1" onclick="calcolaDislivello()">Calcola Dislivello</button>
+
+        <p id="outDislivello"></p>
+    </div>
+
+    <script>
+        function calcolaDislivello() {
+            let partenza = document.getElementById("partenza").value;
+            let pausa = document.getElementById("pausa").value;
+            let arrivo = document.getElementById("arrivo").value;
+
+            partenza = parseFloat(partenza);
+            pausa = parseFloat(pausa);
+            arrivo = parseFloat(arrivo);
+
+            let dislivelloTotale = Math.abs(partenza - arrivo) + Math.abs(pausa - arrivo);
+
+        
+            document.getElementById("outDislivello").innerHTML = "Dislivello totale: " + dislivelloTotale + " metri";
+        }
+    </script>
+
+</body>
+</html>
