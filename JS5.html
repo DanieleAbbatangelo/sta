@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolo Dislivello</title>
+    <style>
+        #container {
+            padding: 20px;
+            border: 1px solid black;
+            background-color: aqua;
+            margin: 10px;
+            height: 700px;
+            width: 700px;
+            background-image: url("montagna3.jpg");
+            
+        }
+        #container2 {
+            padding: 20px;
+            border: 1px solid black;
+            background-color: aqua;
+            margin: 10px;
+            height: 700px;
+            width: 700px;
+            background-image: url("montagna4.jpg");
+            
+        }
+        #miobottone1 {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #04AA6D;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+#miobottone2 {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #04AA6D;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <h3>Calcolo Dislivello del Trekking</h3>
+
+        <label for="partenza">Altezza punto di partenza (in metri):</label>
+        <input id="partenza" type="number">
+
+        <label for="pausa">Altezza punto di pausa (in metri):</label>
+        <input id="pausa" type="number">
+
+        <label for="arrivo">Altezza punto di arrivo (in metri):</label>
+        <input id="arrivo" type="number">
+
+        <p></p>
+
+        <button  id="miobottone1" onclick="calcolaDislivello()">Calcola Dislivello</button>
+
+        <p id="outDislivello"></p>
+    </div>
+
+    <script>
+        function calcolaDislivello() {
+            let partenza = document.getElementById("partenza").value;
+            let pausa = document.getElementById("pausa").value;
+            let arrivo = document.getElementById("arrivo").value;
+
+            partenza = parseFloat(partenza);
+            pausa = parseFloat(pausa);
+            arrivo = parseFloat(arrivo);
+
+            let dislivelloTotale = Math.abs(partenza - arrivo) + Math.abs(pausa - arrivo);
+
+        
+            document.getElementById("outDislivello").innerHTML = "Dislivello totale: " + dislivelloTotale + " metri";
+        }
+    </script>
+
+<div id="container2">
+    <h3>calcola tempo di percorrenza</h3>
+    <p><label for="orario_partenza">Orario di Partenza (ore:minuti)</label></p>
+    <input id="orario_partenza" type="time">
+    <p><label for="orario_arrivo">Orario di Arrivo (ore:minuti)</label></p>
+    <input id="orario_arrivo" type="time">
+    <p></p>
+    <button id="miobottone2" onclick="calcolaTempo()"> calcola tempo di percorrenza</button>
+    <p id="out2"></p>
+
+</div>
+
+   
+<script>
+
+function calcolaTempo(){
+        let orarioPartenza;
+        let orarioArrivo;
+        let oraPartenza;
+        let minutoPartenza;
+        let oraArrivo;
+        let minutoArrivo;
+        let tempoPercorrenza;
+
+        orarioPartenza = document.getElementById("orario_partenza").value;
+        orarioArrivo = document.getElementById("orario_arrivo").value;
+
+        [oraPartenza, minutoPartenza] = orarioPartenza.split(":").map(Number);
+        [oraArrivo, minutoArrivo] = orarioArrivo.split(":").map(Number);
+
+        tempoPercorrenza = calcolaDifferenza(oraPartenza, minutoPartenza, oraArrivo, minutoArrivo);
+
+        document.getElementById("out2").innerHTML = "Tempo di percorrenza: " + tempoPercorrenza + " minuti";
+    }
+
+
+    function calcolaDifferenza(ora1, minuto1, ora2, minuto2) {
+        const minutiTotali1 = (ora1 * 60) + minuto1;
+        const minutiTotali2 = (ora2 * 60) + minuto2;
+        const differenza = minutiTotali2 - minutiTotali1;
+
+        return differenza;
+    }
+
+
+
+
+    </script>
+
+</body>
+</html>
