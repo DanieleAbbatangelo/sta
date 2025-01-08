@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifica Città</title>
+</head>
+<body>
+    <style>
+        #verificaCitta {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #04AA6D;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+   </style>
+
+    <h1>Verifica Città e Popolazione</h1>
+    <p>Inserisci la città dove abiti:</p>
+    <input type="text" id="citta" placeholder="Città">
+    <button id="verificaCitta" onclick="verificaCitta()">Verifica</button>
+    
+    <p id="risultato"></p>
+    <script>
+        function verificaCitta() {
+            var citta = document.getElementById("citta").value.toLowerCase();
+            var messaggio = "";
+            var popolazioni = {
+                "torino": "Gli abitanti a Torino sono circa 870.000.",
+                "nichelino": "Gli abitanti a Nichelino sono 47.791.",
+                "moncalieri": "Gli abitanti a Moncalieri sono circa 57.000.",
+                "vinovo": "Gli abitanti a Vinovo sono 15.348.",
+                "rivoli": "Gli abitanti a Rivoli sono 46.610.",
+                "collegno": "Gli abitanti a Collegno sono 48.137.",
+                "settimo": "Gli abitanti a Settimo Torinese sono 45.853.",
+                "chieri": "Gli abitanti a Chieri sono 13.694.",
+            };
+            
+            if (popolazioni[citta]) {
+                messaggio = popolazioni[citta];
+            } else {
+                messaggio = "Città non trovata. Prova con una delle seguenti: Torino, Nichelino, Moncalieri, Vinovo, Rivoli, Collegno, Settimo, Chieri.";
+            }
+            
+            document.getElementById("risultato").innerText = messaggio;
+        }
+    </script>
+</body>
+</html>
