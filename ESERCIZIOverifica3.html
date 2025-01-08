@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Inserisci Nome e Sesso</title>
+</head>
+<body>
+
+    <h1>Inserisci il tuo nome e sesso</h1>
+    <style>
+        #saluta {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #04AA6D;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+   </style>
+
+    Nome: <input type="text" id="name"><br><br>
+    Sesso: 
+    <select id="gender">
+        <option value="m">M</option>
+        <option value="f">F</option>
+    </select><br><br>
+
+    <button id="saluta" onclick="saluta()">VERIFICA</button>
+
+    <p id="result"></p>
+
+    <script>
+        function saluta() {
+            var name = document.getElementById("name").value;
+            var gender = document.getElementById("gender").value;
+            var result = document.getElementById("result");
+
+            if (gender === "m") {
+                result.innerHTML = "Ciao " + name + "! La tua aspettativa di vita in Italia è circa 81 anni.";
+            } else if (gender === "f") {
+                result.innerHTML = "Ciao " + name + "! La tua aspettativa di vita in Italia è circa 85 anni.";
+            }
+        }
+    </script>
+
+</body>
+</html>
