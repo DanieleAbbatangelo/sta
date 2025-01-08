@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pari o Dispari</title>
+</head>
+<body>
+
+    <h1>Inserisci un numero</h1>
+    <style>
+        #verifica {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #04AA6D;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+   </style>
+
+    Numero: <input type="number" id="number"><br><br>
+
+    <button id="verifica" onclick="verifica()">Verifica</button>
+
+    <p id="result"></p>
+
+    <script>
+        function verifica() {
+            var number = document.getElementById("number").value;
+            var result = (number % 2 === 0) ? "pari" : "dispari";
+            document.getElementById("result").innerHTML = "Il numero è " + result + ".";
+        }
+    </script>
+
+</body>
+</html>
