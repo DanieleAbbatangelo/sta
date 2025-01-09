@@ -1,0 +1,55 @@
+<!DOCTYPE html> <!DOCTYPE html>
+<html lang="en">
+    <html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+<html>
+<head>
+    <h1>Calcolo Valore Casa</h1>
+</head>
+<body>
+    Città (Genova, Savona, Imperia): <input type="text" id="city"><br>
+    Superficie (mq): <input type="number" id="area"><br>
+    Distanza (m): <input type="number" id="distance"><br>
+    <style>
+        #calcola {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #04AA6D;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+   </style>
+    
+    <button id="calcola" onclick="calcola()">Calcola</button>
+    
+    <p>Valore: <div id="valore">€ 0</div></p>
+
+    <script>
+        function calcola() {
+            let citta= document.getElementById("city").value.toLowerCase();
+            let area = document.getElementById("area").value;
+            let distanza = document.getElementById("distance").value;
+            
+            let costoPerMq = (city == "genova") ? 5000 : (city == "savona") ? 7000 : (city == "imperia") ? 6000 : 0;
+            let incremento = (distance < 100) ? 3000 : (distance < 500) ? 1500 : 500;
+
+            if (costoPerMq === 0) {
+                alert("Città non valida. Inserisci Genova, Savona o Imperia.");
+                return;
+            }
+
+            let valore = area * (costoPerMq + incremento);
+            document.getElementById("valore").innerText = "€ " + valore;
+        }
+    </script>
+</body>
+</html>
