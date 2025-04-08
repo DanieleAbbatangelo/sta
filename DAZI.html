@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolatore Dazi</title>
+</head>
+<body>
+
+    <h1>Calcolatore Dazi</h1>
+    
+    <input type="number" id="costo" placeholder="Costo (€)" />
+    <input type="number" id="ricarico" placeholder="Ricarico (€)" />
+    <button onclick="calcolaSomma()">Calcola Esportazione</button>
+
+    <input type="number" id="percentuale" placeholder="Percentuale (%)" value="20" />
+    <button onclick="calcolaPercentuale()">Calcola Percentuale</button>
+
+    
+    <p id="result"></p>
+
+    <script>
+        function calcolaSomma() {
+            var costo = parseFloat(document.getElementById('costo').value);
+            var ricarico = parseFloat(document.getElementById('ricarico').value);
+            var somma = costo + ricarico;
+            document.getElementById('result').textContent = "Somma totale: " + somma.toFixed(2) + " €";
+        }
+
+        function calcolaPercentuale() {
+            var somma = parseFloat(document.getElementById('result').textContent.replace("Somma totale: ", "").replace(" €", ""));
+            var percentuale = parseFloat(document.getElementById('percentuale').value);
+            if (!isNaN(somma) && !isNaN(percentuale)) {
+                var percent = (somma * percentuale) / 100;
+                var dazio = percent * 0.10;  // Dazio al 10%
+                var conversione = percent * 1.1;  // Conversione a dollari (1€ = 1.1$)
+                document.getElementById('result').textContent = "Percentuale: " + percent.toFixed(2) + " €, Dazio: " + dazio.toFixed(2) + " €, Conversione: " + conversione.toFixed(2) + " $";
+            } else {
+                alert("Per favore, calcola prima la somma!");
+            }
+        }
+    </script>
+</body>
+</html>
